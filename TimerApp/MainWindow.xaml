@@ -1,0 +1,53 @@
+﻿<Window x:Class="TimerApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Timer" WindowState="Normal" Height="600" Width="600" ResizeMode="NoResize"
+        Background="#333333" Foreground="#FFFFFF">
+    <Window.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="#555555"/>
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+            <Setter Property="BorderBrush" Value="#777777"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#444444"/>
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+            <Setter Property="BorderBrush" Value="#777777"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Height" Value="50"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Label Content="{Binding TimeDisplay}" FontSize="48" HorizontalAlignment="Center" Margin="20"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
+                <StackPanel Margin="20">
+                    <Label Content="Minutes:" FontSize="24"/>
+                    <TextBox Text="{Binding Minutes, UpdateSourceTrigger=PropertyChanged}" Width="100" PreviewTextInput="NumberValidationTextBox"/>
+                </StackPanel>
+                <StackPanel Margin="20">
+                    <Label Content="Seconds:" FontSize="24"/>
+                    <TextBox Text="{Binding Seconds, UpdateSourceTrigger=PropertyChanged}" Width="100" PreviewTextInput="NumberValidationTextBox"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
+                <Button Content="Add 10 Minutes" Command="{Binding AddTenMinutesCommand}" Width="150" Height="60"/>
+                <Button Content="Add 15 Minutes" Command="{Binding AddFifteenMinutesCommand}" Width="150" Height="60"/>
+                <Button Content="Add 30 Minutes" Command="{Binding AddThirtyMinutesCommand}" Width="150" Height="60"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
+                <Button Content="Start" Command="{Binding StartCommand}" Width="150" Height="60"/>
+                <Button Content="{Binding ButtonContent}" Command="{Binding ClearOrStopCommand}" Width="150" Height="60"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
